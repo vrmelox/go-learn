@@ -1,0 +1,285 @@
+/*
+
+
+
+
+
+
+
+
+
+
+
+/*
+=============================================================================
+BLOC 3 : GESTION D'ERREURS ET FICHIERS
+=============================================================================
+*/
+
+// EXERCICE 12 : Lecture de fichier
+// Créez une fonction qui lit un fichier et compte les lignes
+// Input: chemin (string)
+// Output: nombre de lignes (int), erreur
+
+func compterLignes(chemin string) (int, error) {
+	// VOTRE CODE ICI
+	// Utilisez os.Open() et bufio.Scanner
+	return 0, nil
+}
+
+// EXERCICE 13 : Écriture de fichier
+// Créez une fonction qui écrit un slice de strings dans un fichier
+// Input: chemin (string), lignes ([]string)
+// Output: erreur
+
+func ecrireLignes(chemin string, lignes []string) error {
+	// VOTRE CODE ICI
+	// Utilisez os.Create() et bufio.Writer
+	return nil
+}
+
+// EXERCICE 14 : Manipulation de JSON
+// Créez une fonction qui convertit une structure en JSON
+// et une autre qui fait l'inverse
+
+type Etudiant struct {
+	Nom    string `json:"nom"`
+	Age    int    `json:"age"`
+	Notes  []int  `json:"notes"`
+}
+
+func etudiantVersJSON(e Etudiant) (string, error) {
+	// VOTRE CODE ICI
+	// Utilisez json.Marshal
+	return "", nil
+}
+
+func jsonVersEtudiant(donnees string) (Etudiant, error) {
+	// VOTRE CODE ICI
+	// Utilisez json.Unmarshal
+	return Etudiant{}, nil
+}
+
+// EXERCICE 15 : defer, panic, recover
+// Créez une fonction qui utilise defer pour fermer un fichier
+// et recover pour gérer les panics
+
+func operationSecurisee() (resultat string, err error) {
+	// VOTRE CODE ICI
+	// Utilisez defer pour capturer les panics
+	return "", nil
+}
+
+/*
+=============================================================================
+PROJET 3 : APPLICATION DE GESTION DE TÂCHES (TODO LIST)
+=============================================================================
+Créez une application complète qui :
+- Sauvegarde et charge les tâches depuis un fichier JSON
+- Structure Tache (id, titre, description, complete, dateCreation)
+- Fonctions : AjouterTache, MarquerComplete, SupprimerTache
+- ListeTaches (toutes, complètes, incomplètes)
+- Gestion d'erreurs robuste
+- Sauvegarde automatique après chaque modification
+*/
+
+type Tache struct {
+	ID          int       `json:"id"`
+	Titre       string    `json:"titre"`
+	Description string    `json:"description"`
+	Complete    bool      `json:"complete"`
+	DateCreation string   `json:"date_creation"`
+}
+
+type GestionnaireTaches struct {
+	Taches      []Tache
+	FichierJSON string
+	ProchainID  int
+}
+
+// Implémentez toutes les fonctionnalités
+
+/*
+=============================================================================
+BLOC 4 : CONCURRENCE
+=============================================================================
+*/
+
+// EXERCICE 16 : Goroutines basiques
+// Créez une fonction qui lance plusieurs goroutines
+// Chaque goroutine affiche un message avec son numéro
+
+func lancerGoroutines(n int) {
+	// VOTRE CODE ICI
+	// Utilisez go keyword et sync.WaitGroup
+}
+
+// EXERCICE 17 : Channels
+// Créez une fonction qui utilise un channel pour communiquer
+// entre deux goroutines
+
+func calculerAvecChannel(nombres []int) int {
+	// VOTRE CODE ICI
+	// Une goroutine calcule, l'autre reçoit via channel
+	return 0
+}
+
+// EXERCICE 18 : Select
+// Créez une fonction avec timeout utilisant select
+
+func operationAvecTimeout(duree int) (string, error) {
+	// VOTRE CODE ICI
+	// Utilisez time.After et select
+	return "", nil
+}
+
+// EXERCICE 19 : Worker pool
+// Créez un pool de workers pour traiter des tâches
+
+func workerPool(taches []int, nbWorkers int) []int {
+	// VOTRE CODE ICI
+	// Plusieurs workers traitent des tâches depuis un channel
+	return nil
+}
+
+// EXERCICE 20 : Context
+// Créez une fonction qui utilise context pour annulation
+
+func operationAnnulable(ctx context.Context) error {
+	// VOTRE CODE ICI
+	// Respectez l'annulation via context
+	return nil
+}
+
+/*
+=============================================================================
+PROJET 4 : TÉLÉCHARGEUR DE FICHIERS CONCURRENT
+=============================================================================
+Créez un téléchargeur qui :
+- Télécharge plusieurs URLs en parallèle
+- Limite le nombre de téléchargements simultanés (worker pool)
+- Affiche la progression
+- Gère les timeouts
+- Permet l'annulation via context
+- Sauvegarde les résultats avec gestion d'erreurs
+*/
+
+type ResultatTelechargement struct {
+	URL     string
+	Taille  int64
+	Duree   float64
+	Erreur  error
+}
+
+func TelechargerFichiers(urls []string, nbWorkers int, timeout int) []ResultatTelechargement {
+	// VOTRE CODE ICI
+	return nil
+}
+
+/*
+=============================================================================
+BLOC 5 : TESTS ET BONNES PRATIQUES
+=============================================================================
+*/
+
+// EXERCICE 21 : Tests unitaires
+// Écrivez des tests pour la fonction suivante
+
+func Multiplier(a, b int) int {
+	return a * b
+}
+
+// Créez multiplier_test.go avec des tests
+
+// EXERCICE 22 : Table-driven tests
+// Écrivez des tests avec plusieurs cas
+
+func EstPalindrome(s string) bool {
+	// VOTRE CODE ICI
+	return false
+}
+
+// EXERCICE 23 : Benchmarks
+// Créez des benchmarks pour comparer deux implémentations
+
+func Fibonacci1(n int) int {
+	// Version récursive
+	if n <= 1 {
+		return n
+	}
+	return Fibonacci1(n-1) + Fibonacci1(n-2)
+}
+
+func Fibonacci2(n int) int {
+	// Version itérative - VOTRE CODE ICI
+	return 0
+}
+
+// EXERCICE 24 : Interfaces et mocking
+// Créez une interface pour faciliter les tests
+
+type ServiceEmail interface {
+	EnvoyerEmail(destinataire, sujet, corps string) error
+}
+
+// Implémentez un mock pour les tests
+
+// EXERCICE 25 : Documentation
+// Documentez la fonction suivante avec godoc
+
+func CalculerMoyenne(nombres []float64) float64 {
+	// VOTRE CODE ICI
+	return 0.0
+}
+
+/*
+=============================================================================
+PROJET FINAL : API REST POUR GESTION DE CONTACTS
+=============================================================================
+Créez une API REST complète avec :
+- Structure Contact (id, nom, email, telephone)
+- Endpoints : GET /contacts, GET /contacts/:id, POST /contacts, 
+  PUT /contacts/:id, DELETE /contacts/:id
+- Sauvegarde en JSON
+- Validation des données
+- Gestion d'erreurs HTTP appropriée
+- Middleware de logging
+- Tests unitaires complets
+- Documentation complète
+
+Utilisez le package net/http ou un framework comme Gin
+
+Structure suggérée :
+*/
+
+type Contact struct {
+	ID        int    `json:"id"`
+	Nom       string `json:"nom"`
+	Email     string `json:"email"`
+	Telephone string `json:"telephone"`
+}
+
+type APIContacts struct {
+	contacts   []Contact
+	prochainID int
+}
+
+// Implémentez tous les handlers et la logique
+
+/*
+=============================================================================
+CONSEILS POUR PROGRESSER :
+=============================================================================
+
+1. Testez chaque exercice avec plusieurs cas
+2. Lisez les messages d'erreur attentivement
+3. Utilisez go fmt pour formater votre code
+4. Utilisez go vet pour détecter les erreurs
+5. Consultez la documentation officielle : golang.org/doc
+6. Pratiquez régulièrement, même 30 minutes par jour
+7. Lisez du code Go open-source sur GitHub
+8. Rejoignez la communauté Go (forums, Discord)
+
+Bon apprentissage ! 🚀
+=============================================================================
+*/
