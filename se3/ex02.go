@@ -27,7 +27,7 @@ func compterLignes(chemin string) (int, error) {
 }
 
 func main() {
-	f, err := compterLignes("text.txt")
+	f, err := compterLignes("../danse.txt")
 
 	if err != nil {
 		fmt.Println("Ah oui, un problème occured:", err)
