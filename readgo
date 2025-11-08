@@ -16,50 +16,6 @@ BLOC 3 : GESTION D'ERREURS ET FICHIERS
 =============================================================================
 */
 
-// EXERCICE 12 : Lecture de fichier
-// Créez une fonction qui lit un fichier et compte les lignes
-// Input: chemin (string)
-// Output: nombre de lignes (int), erreur
-
-func compterLignes(chemin string) (int, error) {
-	// VOTRE CODE ICI
-	// Utilisez os.Open() et bufio.Scanner
-	return 0, nil
-}
-
-// EXERCICE 13 : Écriture de fichier
-// Créez une fonction qui écrit un slice de strings dans un fichier
-// Input: chemin (string), lignes ([]string)
-// Output: erreur
-
-func ecrireLignes(chemin string, lignes []string) error {
-	// VOTRE CODE ICI
-	// Utilisez os.Create() et bufio.Writer
-	return nil
-}
-
-// EXERCICE 14 : Manipulation de JSON
-// Créez une fonction qui convertit une structure en JSON
-// et une autre qui fait l'inverse
-
-type Etudiant struct {
-	Nom    string `json:"nom"`
-	Age    int    `json:"age"`
-	Notes  []int  `json:"notes"`
-}
-
-func etudiantVersJSON(e Etudiant) (string, error) {
-	// VOTRE CODE ICI
-	// Utilisez json.Marshal
-	return "", nil
-}
-
-func jsonVersEtudiant(donnees string) (Etudiant, error) {
-	// VOTRE CODE ICI
-	// Utilisez json.Unmarshal
-	return Etudiant{}, nil
-}
-
 // EXERCICE 15 : defer, panic, recover
 // Créez une fonction qui utilise defer pour fermer un fichier
 // et recover pour gérer les panics
