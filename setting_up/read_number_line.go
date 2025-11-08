@@ -12,7 +12,7 @@ import (
 func getContent(fichier string) ([]string, error) {
 	f, err := os.Open(fichier)
 	if (err != nil) {
-		return []string{}, fmt.Errorf("Le fichier %w ne s'ouvre pas à cause de %w", fichier, err)
+		return []string{}, errors.New("Le fichier " + fichier + " ne s'ouvre pas à cause de " + err.Error())
 	}
 	text := []string{}
 	defer f.Close()
@@ -21,9 +21,9 @@ func getContent(fichier string) ([]string, error) {
 	for scanner.Scan() {
 		ligne := scanner.Text()
 		if len(strings.TrimSpace(ligne)) == 0 {
-			return []string{}, fmt.Errorf("Le fichier %w contient des lignes vides", fichier)
+			return []string{}, errors.New("le fichier " + fichier + " contient des lignes vides")
 		}
-		text = append(text, ligne + "\n")
+		text = append(text, ligne)
 	}
 	if err := scanner.Err(); err != nil {
 		return []string{}, fmt.Errorf("erreur de lecture: %w", err)
@@ -35,20 +35,11 @@ func readNumberOnLine(fichier string) (int, error) {
 	text, err := getContent(fichier)
 
 	if (err != nil) {
-		return 0, errors.New("Une erreur semble survenue à la lecture du fichier")
+		return 0, errors.New("une erreur semble survenue à la lecture du fichier")
 	}
 	a, err := strconv.Atoi(text[0])
 	if err != nil {
-		return -1, fmt.Errorf("Huston, nous avons un problème: %w", err)
+		return -1, fmt.Errorf("houston, nous avons un problème: %w", err)
 	}
 	return a, nil
-}
-
-func main() {
-	file := os.Args[1]
-	nbr, err := readNumberOnLine(file)
-	if err != nil {
-		fmt.Errorf("Fichier invalide")
-	}
-	fmt.Printf("Le nombre est de %d\n", nbr)
 }

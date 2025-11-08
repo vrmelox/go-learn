@@ -5,7 +5,7 @@ SRC = read_number_ligne.go
 BINARY_NAME = setting_up
 
 build: 
-	go build -o $(BINARY_NAME) $(SRC)
+	go build -o $(BINARY_NAME) .
 
 clean: 
 	rm -rf $(BINARY_NAME)
