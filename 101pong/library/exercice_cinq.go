@@ -10,6 +10,7 @@ import (
 func positionAtn(x0, y0, z0, x1, y1, z1, n float64) Vector {
 	velo := vectorDif(Vector{x0, y0, z0}, Vector{x1, y1, z1})
 	vecoef := coefVector(velo, n)
+	fmt.Println(velo)
 	return vectorSum(vecoef, Vector{x1, y1, z1})
 }
 
