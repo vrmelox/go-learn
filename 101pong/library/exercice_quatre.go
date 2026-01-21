@@ -1,9 +1,9 @@
-package main 
+package main
 
 import (
 	"math"
 )
 
 func vectNorm(v Vector) float64 {
-	return math.Sqrt(math.Pow(v.x, 2) + math.Pow(v.y, 2) + math.Pow(v.z, 2))
+	return math.Sqrt((v.x * v.x) + (v.y * v.y) + (v.z * v.z))
 }
